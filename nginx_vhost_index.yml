@@ -1,0 +1,10 @@
+---
+
+- name: deploy nginx_vhost_index
+  hosts: localhost
+  sudo: yes
+  connection: local
+  roles:
+    - nginx
+    - thin
+    - nginx_vhost_index

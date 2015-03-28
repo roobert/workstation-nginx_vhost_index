@@ -1,0 +1,27 @@
+---
+
+- name: checkout web app from github
+  git:
+    repo=https://github.com/roobert/nginx_vhost_index.git
+    dest=/opt/nginx_vhost_index
+
+- name: thin config
+  copy:
+    src=thin/nginx_vhost_index.yml
+    dest=/etc/thin2.1/
+  notify: reload thin
+
+- name: nginx config
+  copy:
+    src=nginx/nginx_vhost_index
+    dest=/etc/nginx/sites-available/
+  notify: reload nginx
+
+- name: nginx config link
+  file:
+    src=/etc/nginx/sites-available/nginx_vhost_index
+    dest=/etc/nginx/sites-enabled/nginx_vhost_index
+    state=link
+  notify: reload nginx
+
+

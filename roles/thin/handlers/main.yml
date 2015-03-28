@@ -1,0 +1,7 @@
+---
+
+- name: reload thin
+  service:
+    name=thin
+    state=reloaded
+

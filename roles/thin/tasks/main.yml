@@ -1,0 +1,12 @@
+---
+
+- name: thin
+  apt:
+    package=thin
+    state=present
+
+- name: thin service
+  service:
+    name=thin
+    state=started
+    enabled=yes
