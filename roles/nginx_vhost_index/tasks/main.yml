@@ -24,4 +24,9 @@
     state=link
   notify: reload nginx
 
+- name: network-manager config
+  copy:
+    src=network-manager/nginx_vhost_index
+    dest=/etc/NetworkManager/dnsmasq.d/nginx_vhost_index
+  notify: restart network-manager
 
